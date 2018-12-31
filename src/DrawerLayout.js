@@ -181,15 +181,17 @@ export default class DrawerLayout extends Component {
                 <Animated.View style={styles.main}>
                     {this.props.children}
                 </Animated.View>
-                <TouchableWithoutFeedback
+                {drawerShown ?
+                  <TouchableWithoutFeedback
                     pointerEvents={pointerEvents}
                     onPress={this._onOverlayClick}
-                >
+                  >
                     <Animated.View
-                        pointerEvents={pointerEvents}
-                        style={[styles.overlay, animatedOverlayStyles]}
+                      pointerEvents={pointerEvents}
+                      style={[styles.overlay, animatedOverlayStyles]}
                     />
-                </TouchableWithoutFeedback>
+                  </TouchableWithoutFeedback>          
+                : null}
                 <Animated.View
                     accessibilityViewIsModal={accessibilityViewIsModal}
                     style={[
